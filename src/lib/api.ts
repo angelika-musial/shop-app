@@ -1,0 +1,19 @@
+import { ApiResponse } from '@/types/api';
+
+export const getProducts = async (): Promise<ApiResponse> => {
+	const response = await fetch(
+		'https://1jbod7rtr5.execute-api.eu-central-1.amazonaws.com/prod/exercise',
+		{
+			headers: {
+				'x-api-key': '8865cb695d00c83c542790757b5e6ad08d47c3909cc652cc',
+			},
+			cache: 'no-store',
+		},
+	);
+
+	if (!response.ok) {
+		throw new Error('Failed to fetch products');
+	}
+
+	return response.json();
+};
