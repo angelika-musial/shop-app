@@ -1,18 +1,12 @@
 import { getProducts } from '@/lib/api';
+import { ProductList } from '@/components/ProductList/ProductList';
 
 export default async function Home() {
 	const data = await getProducts();
 
 	return (
 		<main>
-			<h1>{data.title}</h1>
-
-			{data.products.map((product) => (
-				<div key={product.articleNumber}>
-					<h2>{product.title}</h2>
-					<p>{product.description}</p>
-				</div>
-			))}
+			<ProductList products={data.products} />
 		</main>
 	);
 }
