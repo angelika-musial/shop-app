@@ -6,6 +6,10 @@ export default async function Home() {
 
 	return (
 		<main>
+			<header className='page-header'>
+				<h1>Our Products</h1>
+				<p>Discover our carefully curated collection</p>
+			</header>
 			<ProductList products={data.products} />
 		</main>
 	);
