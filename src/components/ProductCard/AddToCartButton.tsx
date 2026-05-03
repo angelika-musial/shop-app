@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
+import toast from 'react-hot-toast';
 
 export const AddToCartButton = () => {
 	const { addToCart } = useCart();
@@ -9,8 +10,20 @@ export const AddToCartButton = () => {
 
 	const handleAdd = async () => {
 		setIsAdding(true);
-		await addToCart();
-		setIsAdding(false);
+		try {
+			await addToCart();
+			toast.success('Product added to cart!', {
+				style: {
+					borderRadius: '10px',
+					background: '#0f172a',
+					color: '#fff',
+				},
+			});
+		} catch {
+			toast.error('Something went wrong');
+		} finally {
+			setIsAdding(false);
+		}
 	};
 
 	return (

@@ -4,6 +4,7 @@ import './globals.scss';
 import { CartProvider } from '@/context/CartContext';
 import { Header } from '@/components/Header/Header';
 import { getProducts } from '@/lib/api';
+import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
 	title: 'Columbus Store',
@@ -21,6 +22,7 @@ export default async function RootLayout({
 		<html lang='en'>
 			<body>
 				<CartProvider>
+					<Toaster position="top-center"/>
 					<Header logo={data.logo} />
 					<main>{children}</main>
 				</CartProvider>
